@@ -9,6 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UWPConsoleApp", "UWPConsole
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedItems\SharedItems.vcxitems*{0d395c01-fe86-4658-b6aa-d4bf5738ecf7}*SharedItemsImports = 4
 		SharedItems\SharedItems.vcxitems*{7263b7d1-d1fc-45b5-b336-2c08516efe6a}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

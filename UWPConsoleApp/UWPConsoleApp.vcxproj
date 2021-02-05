@@ -101,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Driver.h" />
+    <ClInclude Include="DriverOptions.h" />
     <ClInclude Include="location.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

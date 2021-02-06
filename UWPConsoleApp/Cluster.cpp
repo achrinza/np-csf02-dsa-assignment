@@ -91,4 +91,5 @@ DriverNode* Cluster::getDrivers(location rloc) {
 			current->next = holder;
 		}
 	}
+	return driverset;
 }

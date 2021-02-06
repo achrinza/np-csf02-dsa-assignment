@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "DriverOptions.h"
 using namespace std;
 
 class Driver
@@ -11,7 +10,7 @@ private:
 	string Fullname;
 	string Carmodel;
 	int Maxpax;
-	DriverOptions* Options;
+	string Options[5];
 	string Plateno;
 
 public:
@@ -20,6 +19,7 @@ public:
 	string name();
 	bool addoption(string op);
 	void rmoption(string op);
+	bool search(string op);
 	void viewoptions();
 	void updatecar(string carmodel, string plateno, int maxpax);
 

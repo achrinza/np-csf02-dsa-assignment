@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Driver.h"
-#include "DriverOptions.h"
 #include <string>
 using namespace std;
 
@@ -9,59 +8,41 @@ Driver::Driver(string name, string carmodel, string plateno, int maxpax) {
 	Fullname = name;
 	Carmodel = carmodel;
 	Plateno = plateno;
-	Options = NULL;
 	Maxpax = maxpax;
 }
 string Driver::name() { return Fullname; }
 bool Driver::addoption(string op) {
-	DriverOptions* temp = new DriverOptions;
-	temp->option = op;
-	temp->next = NULL;
-	if (Options == NULL) {
-		Options = temp;
-		return true;
+	for (int i = 0; i < 5; i++) {
+		if (Options[i] == op)
+			return false;
 	}
-	else {
-		DriverOptions* travel = new DriverOptions;
-		travel = Options;
-		while (travel != NULL && travel->option != op) {
-			if (travel->next == NULL) {
-				travel->next = temp;
-				return true;
-			}
-			travel = travel->next;
-		}
-		return false;
-	}
+	Options->append(op);
+	return true;
 }
 void Driver::rmoption(string op) {
-	if (Options != NULL) {
-		DriverOptions* del = new DriverOptions;
-		del = Options;
-		while (del != NULL && del->option != op)
-			del = del->next;
-		if (del != NULL) {
-			DriverOptions* cut = new DriverOptions;
-			while (cut->next != del)
-				cut = cut->next;
-			cut->next = del->next;
-			delete del;
-			del = NULL;
+	int i = 0;
+	while (i < 5 && Options[i] != op)
+		i++;
+	if (Options[i] == op) {
+		if (i < 4) {
+			for (int x = i; x < 4; x++)
+				Options[i] = Options[i + 1];
 		}
+		Options[4] = "";
 	}
 }
-void Driver::viewoptions() {
-	if (Options == NULL)
-		cout << "No options" << endl;
-	else {
-		DriverOptions* display = new DriverOptions;
-		display = Options;
-		while (display != NULL) {
-			cout << display->option << ", ";
-			display = display->next;
-		}
+bool Driver::search(string op) {
+	for (int i = 0; i < 5; i++) {
+		if (Options[i] == op)
+			return true;
 	}
-		
+	return false;
+}
+void Driver::viewoptions() {
+	for (int i = 0; i < 5; i++) {
+		if (Options[i] != "")
+			cout << Options[i] << ", ";
+	}
 }
 void Driver::updatecar(string carmodel, string plateno, int maxpax) {
 	Carmodel = carmodel;

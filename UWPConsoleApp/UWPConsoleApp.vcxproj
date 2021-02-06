@@ -104,7 +104,6 @@
     <ClInclude Include="Cluster.h" />
     <ClInclude Include="Driver.h" />
     <ClInclude Include="DriverNode.h" />
-    <ClInclude Include="DriverOptions.h" />
     <ClInclude Include="location.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Rider.h" />

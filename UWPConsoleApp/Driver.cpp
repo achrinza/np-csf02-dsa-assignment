@@ -12,6 +12,7 @@ Driver::Driver(string name, string carmodel, string plateno, int maxpax) {
 	Options = NULL;
 	Maxpax = maxpax;
 }
+string Driver::name() { return Fullname; }
 bool Driver::addoption(string op) {
 	DriverOptions* temp = new DriverOptions;
 	temp->option = op;

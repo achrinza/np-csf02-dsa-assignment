@@ -59,19 +59,8 @@ void Cluster::rmDriver(string dname) {
 }
 DriverNode* Cluster::getDrivers(int n) {
 	DriverNode* driverset = new DriverNode;
-	DriverNode* temp = new DriverNode;
-	temp = Drivers;
+	driverset = Drivers;
 	for (int i = 0; i < n; i++)
-		temp = temp->next;
-	driverset->dloc = temp->dloc;
-	driverset->item = temp->item;
-	driverset->next = NULL;
-	for (int z = 0; z < 4; z++) {
-		if (temp->next != NULL) {
-			temp = temp->next;
-			driverset->next = temp;
-			driverset->next->next = NULL;
-		}
-	}
+		driverset = driverset->next;
 	return driverset;
 }

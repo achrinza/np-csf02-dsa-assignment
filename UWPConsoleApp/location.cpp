@@ -11,4 +11,4 @@ double* location::getcoor() {
 	double coor[2] = { xcoor, ycoor };
 	return coor;
 }
-
+double location::getsum() { return (xcoor + ycoor); }

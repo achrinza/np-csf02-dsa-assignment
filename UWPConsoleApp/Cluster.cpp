@@ -2,12 +2,14 @@
 #include "Cluster.h"
 #include "Driver.h"
 #include "DriverNode.h"
+#include <cmath>
 
 Cluster::Cluster() {}
 Cluster::Cluster(location start, location end) {
 	Start = start;
 	End = end;
 	Drivers = NULL;
+	size = 0;
 }
 bool Cluster::addDriver(Driver d, location dloc) {
 	if (Start.getcoor()[0] <= dloc.getcoor()[0] && dloc.getcoor()[0] <= End.getcoor()[0]) {
@@ -18,15 +20,17 @@ bool Cluster::addDriver(Driver d, location dloc) {
 			temp->next = NULL;
 			if (Drivers == NULL) {
 				Drivers = temp;
+				size++;
 				return true;
 			}
 			else {
 				DriverNode* travel = new DriverNode;
 				travel = Drivers;
-				while (travel->next != NULL && (dloc.getcoor()[0] + dloc.getcoor()[1]) >= (travel->next->dloc.getcoor()[0] + travel->dloc.getcoor()[1]))
+				while (travel->next != NULL && dloc.getsum() >= travel->next->dloc.getsum())
 					travel = travel->next;
 				temp->next = travel->next;
 				travel->next = temp;
+				size++;
 				return true;
 			}
 		}
@@ -41,6 +45,7 @@ void Cluster::rmDriver(string dname) {
 		Drivers = Drivers->next;
 		delete temp;
 		temp = NULL;
+		size--;
 	}
 	else {
 		temp = temp->next;
@@ -54,13 +59,36 @@ void Cluster::rmDriver(string dname) {
 			del->next = temp->next;
 			delete temp;
 			temp = NULL;
+			size--;
 		}
 	}
 }
-DriverNode* Cluster::getDrivers(int n) {
+DriverNode* Cluster::getDrivers(location rloc) {
 	DriverNode* driverset = new DriverNode;
-	driverset = Drivers;
-	for (int i = 0; i < n; i++)
-		driverset = driverset->next;
-	return driverset;
+	DriverNode* temp = new DriverNode;
+	temp = Drivers;
+	driverset->dloc = temp->dloc;
+	driverset->item = temp->item;
+	driverset->next = NULL;
+	while (temp != NULL) {
+		DriverNode* current = new DriverNode;
+		temp = temp->next;
+		if (abs(current->dloc.getsum() - rloc.getsum()) > abs(temp->dloc.getsum() - rloc.getsum())) {
+			current->dloc = temp->dloc;
+			current->item = temp->item;
+			current->next = driverset;
+			driverset = current;
+
+		}
+		else {
+			current = driverset;
+			while (current->next != NULL && abs(current->next->dloc.getsum() - rloc.getsum()) < abs(temp->dloc.getsum() - rloc.getsum()))
+				current = current->next;
+			DriverNode* holder = new DriverNode;
+			holder->dloc = temp->dloc;
+			holder->item = temp->item;
+			holder->next = current->next;
+			current->next = holder;
+		}
+	}
 }

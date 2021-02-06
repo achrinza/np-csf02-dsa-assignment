@@ -9,5 +9,6 @@ public:
 	location();
 	location(double x, double y);
 	double* getcoor();
+	double getsum();
 };
 

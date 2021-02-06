@@ -17,6 +17,7 @@ private:
 public:
 	Driver();
 	Driver(string name, string carmodel, string plateno,int maxpax);
+	string name();
 	bool addoption(string op);
 	void rmoption(string op);
 	void viewoptions();

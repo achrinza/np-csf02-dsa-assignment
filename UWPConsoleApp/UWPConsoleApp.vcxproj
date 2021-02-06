@@ -106,6 +106,7 @@
     <ClInclude Include="DriverNode.h" />
     <ClInclude Include="location.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Propose.h" />
     <ClInclude Include="Rider.h" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +118,7 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Propose.cpp" />
     <ClCompile Include="Rider.cpp" />
   </ItemGroup>
   <ItemGroup>

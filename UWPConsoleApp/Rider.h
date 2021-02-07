@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 class Rider
@@ -14,4 +15,5 @@ public:
 	};
 
 	std::string getName();
+	void printAsHumanReadable(std::ostream& output);
 };

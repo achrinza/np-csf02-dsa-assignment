@@ -46,23 +46,25 @@ DriverNode* Cluster::getDrivers(Location rloc) {
 
 	while (workingDriverNode != nullptr) {
 		workingDriverNode = workingDriverNode->next_;
-		if (abs(current->coordinate_.getSum() - rloc.getSum()) > abs(workingDriverNode->coordinate_.getSum() - rloc.getSum())) {
-			DriverNode current{
+		if (abs(driverset->coordinate_.getSum() - rloc.getSum()) > abs(workingDriverNode->coordinate_.getSum() - rloc.getSum())) {
+			auto current = new DriverNode{
 				workingDriverNode->item_,
 				workingDriverNode->coordinate_,
 				driverset
 			};
-			driverset = *current;
+			driverset = current;
 
 		}
 		else {
-			current = driverset;
+			auto current = driverset;
 			while (current->next_ != NULL && abs(current->next_->coordinate_.getSum() - rloc.getSum()) < abs(workingDriverNode->coordinate_.getSum() - rloc.getSum()))
 				current = current->next_;
-			DriverNode* holder = new DriverNode;
-			holder->coordinate_ = workingDriverNode->coordinate_;
-			holder->item_ = workingDriverNode->item_;
-			holder->next_ = current->next_;
+			DriverNode* holder = new DriverNode{
+				workingDriverNode->item_,
+				workingDriverNode->coordinate_,
+				workingDriverNode->next_
+			};
+
 			current->next_ = holder;
 		}
 	}

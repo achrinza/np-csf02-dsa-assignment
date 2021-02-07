@@ -1,6 +1,5 @@
 #pragma once
-#include "Location.h"
-#include "Driver.h"
+#include "Available.h"
 #include "DriverNode.h"
 
 class Cluster
@@ -13,7 +12,7 @@ private:
 
 public:
 	Cluster(Location start, Location end) : start_(start), end_(end) {};
-	bool addDriver(Driver d, Location dloc);
+	bool addDriver(Available driver);
 	void rmDriver(std::string dname);
 	DriverNode* getDrivers(Location rloc);
 };

@@ -1,15 +1,17 @@
 #pragma once
+#include "Available.h"
 #include "Driver.h"
-#include "location.h"
+#include "Location.h"
 
-typedef Driver driver;
-typedef Location loc;
+typedef Available available_driver;
 
 class DriverNode {
 public:
-	DriverNode(driver item, loc coordinate, DriverNode* next) :
+	DriverNode(available_driver item, DriverNode* next) :
+		item_(item.getdriver_()), coordinate_(item.getloc_()), next_(next) {};
+	DriverNode(Driver item, Location coordinate, DriverNode* next) :
 		item_(item), coordinate_(coordinate), next_(next) {};
-	driver item_;
-	loc coordinate_;
+	Driver item_;
+	Location coordinate_;
 	DriverNode* next_;
 };

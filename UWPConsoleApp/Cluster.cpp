@@ -1,25 +1,25 @@
 #include "pch.h"
 #include "Cluster.h"
-#include "Driver.h"
+#include "Available.h"
 #include "DriverNode.h"
 #include <cmath>
 
-bool Cluster::addDriver(Driver d, Location dloc) {
-	if (this->start_.getCoordinate()[0] > dloc.getCoordinate()[0]
-		&& dloc.getCoordinate()[0] > this->end_.getCoordinate()[0]
+bool Cluster::addDriver(Available driver) {
+	if (this->start_.getCoordinate()[0] > driver.getloc_().getCoordinate()[0]
+		&& driver.getloc_().getCoordinate()[0] > this->end_.getCoordinate()[0]
 		) return false;
 
-	if (start_.getCoordinate()[1] <= dloc.getCoordinate()[1]
-		&& dloc.getCoordinate()[1] <= this->end_.getCoordinate()[1]
+	if (start_.getCoordinate()[1] <= driver.getloc_().getCoordinate()[1]
+		&& driver.getloc_().getCoordinate()[1] <= this->end_.getCoordinate()[1]
 		) return false;
 
-	DriverNode* newDriver = new DriverNode { d, dloc, nullptr };
+	DriverNode* newDriver = new DriverNode { driver, nullptr };
 
 	if (this->drivers_ == nullptr)
 		this->drivers_ = newDriver;
 	else {
 		auto travel = drivers_;
-		while (travel->next_ != nullptr && dloc.getSum() >= travel->next_->coordinate_.getSum())
+		while (travel->next_ != nullptr && driver.getloc_().getSum() >= travel->next_->coordinate_.getSum())
 			travel = travel->next_;
 		newDriver->next_ = travel->next_;
 		travel->next_ = newDriver;

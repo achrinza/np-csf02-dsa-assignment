@@ -1,27 +1,33 @@
 #pragma once
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Driver
 {
 
 private:
-	string Fullname;
-	string Carmodel;
-	int Maxpax;
-	string Options[5];
-	string Plateno;
+	static int count_;
+	const int id_;
+	std::string full_name_;
+	std::string car_model_;
+	int max_passengers_;
+	std::string options_[5];
+	std::string plate_number_;
 
 public:
-	Driver();
-	Driver(string name, string carmodel, string plateno,int maxpax);
-	string name();
-	bool addoption(string op);
-	void rmoption(string op);
-	bool search(string op);
-	void viewoptions();
-	void updatecar(string carmodel, string plateno, int maxpax);
+	Driver(std::string full_name, std::string car_model, std::string plate_number, int max_passengers_) :
+		id_(count_+1),
+		full_name_(full_name),
+		car_model_(car_model),
+		plate_number_(plate_number),
+		max_passengers_(max_passengers_) {
+		this->count_++;
+	};
+	std::string getFullName();
+	bool addOption(std::string op);
+	void removeOption(std::string op);
+	void getOptions();
+	bool search(std::string op);
+	void updateCar(std::string carmodel, std::string plateno, int maxpax);
 
 };
-

@@ -1,21 +1,19 @@
 #pragma once
-#include "location.h"
+#include "Location.h"
 #include "Driver.h"
 #include "DriverNode.h"
 
 class Cluster
 {
 private:
-	location Start;
-	location End;
-	DriverNode* Drivers;
-	int size;
+	Location start_;
+	Location end_;
+	DriverNode* drivers_ = nullptr;
+	int size_ = 0;
 
 public:
-	Cluster();
-	Cluster(location start, location end);
-	bool addDriver(Driver d, location dloc);
-	void rmDriver(string dname);
-	DriverNode* getDrivers(location rloc);
+	Cluster(Location start, Location end) : start_(start), end_(end) {};
+	bool addDriver(Driver d, Location dloc);
+	void rmDriver(std::string dname);
+	DriverNode* getDrivers(Location rloc);
 };
-

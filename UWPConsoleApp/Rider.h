@@ -1,14 +1,17 @@
 #pragma once
 #include <string>
-using namespace std;
 
 class Rider
 {
 private:
-	string Name;
+	static int count_;
+	const int id_;
+	std::string name_;
 
 public:
-	Rider();
-	Rider(string name);
-};
+	Rider(std::string name) : id_(count_+1), name_(name) {
+		this->count_++;
+	};
 
+	std::string getName();
+};

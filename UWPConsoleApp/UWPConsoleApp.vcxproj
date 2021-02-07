@@ -104,7 +104,7 @@
     <ClInclude Include="Cluster.h" />
     <ClInclude Include="Driver.h" />
     <ClInclude Include="DriverNode.h" />
-    <ClInclude Include="location.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Propose.h" />
     <ClInclude Include="Rider.h" />
@@ -113,7 +113,7 @@
     <ClCompile Include="Available.cpp" />
     <ClCompile Include="Cluster.cpp" />
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="location.cpp" />
+    <ClCompile Include="Location.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

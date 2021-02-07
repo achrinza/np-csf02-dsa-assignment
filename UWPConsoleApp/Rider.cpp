@@ -1,7 +1,4 @@
 #include "pch.h"
 #include "Rider.h"
 
-Rider::Rider() {}
-Rider::Rider(string name) {
-	Name = name;
-}
+std::string Rider::getName() { return this->name_; }

@@ -4,9 +4,9 @@
 class Available
 {
 private:
-	Driver Dvail;
+	Driver driver_;
 
 public:
-	Available(Driver dvail);
+	Available(Driver driver) : driver_(driver) {};
 };
 

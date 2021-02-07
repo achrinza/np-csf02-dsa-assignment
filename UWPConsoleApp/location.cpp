@@ -2,13 +2,13 @@
 #include "location.h"
 #include <iostream>
 
-location::location() {}
-location::location(double x, double y) {
-	xcoor = x;
-	ycoor = y;
+Location::Location() {}
+Location::Location(double x, double y) {
+	x_coordinate_ = x;
+	y_coordinate_ = y;
 }
-double* location::getcoor() {
-	double coor[2] = { xcoor, ycoor };
+double* Location::getCoordinate() {
+	double coor[2] = { x_coordinate_, y_coordinate_ };
 	return coor;
 }
-double location::getsum() { return (xcoor + ycoor); }
+double Location::getSum() { return (x_coordinate_ + y_coordinate_); }

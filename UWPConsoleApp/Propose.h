@@ -2,19 +2,21 @@
 #include "location.h"
 #include "Rider.h"
 #include <string>
-using namespace std;
 
 class Propose
 {
 private:
-	Rider Applicant;
-	string Payment;
-	location Dest;
-	string Request;
+	Rider proposer_;
+	std::string payment_method_;
+	Location destination_;
+	std::string request_;
 
 public:
-	Propose();
-	Propose(Rider r, string pay, location dest);
-	Propose(Rider r, string pay, location dest, string req);
-};
+	Propose(Rider proposer, std::string payment_method, Location destination) :
+		Propose(proposer, payment_method, destination, "") {};
 
+	Propose(Rider proposer, std::string payment_method, Location destination, std::string request) :
+		proposer_(proposer),
+		payment_method_(payment_method),
+		destination_(destination) {};
+};

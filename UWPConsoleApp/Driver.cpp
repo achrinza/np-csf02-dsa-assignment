@@ -3,49 +3,43 @@
 #include <string>
 using namespace std;
 
-Driver::Driver() {}
-Driver::Driver(string name, string carmodel, string plateno, int maxpax) {
-	Fullname = name;
-	Carmodel = carmodel;
-	Plateno = plateno;
-	Maxpax = maxpax;
-}
-string Driver::name() { return Fullname; }
-bool Driver::addoption(string op) {
+string Driver::getFullName() { return this->full_name_; }
+
+bool Driver::addOption(string op) {
 	for (int i = 0; i < 5; i++) {
-		if (Options[i] == op)
+		if (options_[i] == op)
 			return false;
 	}
-	Options->append(op);
+	options_->append(op);
 	return true;
 }
-void Driver::rmoption(string op) {
+void Driver::removeOption(string op) {
 	int i = 0;
-	while (i < 5 && Options[i] != op)
+	while (i < 5 && options_[i] != op)
 		i++;
-	if (Options[i] == op) {
+	if (options_[i] == op) {
 		if (i < 4) {
 			for (int x = i; x < 4; x++)
-				Options[i] = Options[i + 1];
+				options_[i] = options_[i + 1];
 		}
-		Options[4] = "";
+		options_[4] = "";
 	}
 }
 bool Driver::search(string op) {
 	for (int i = 0; i < 5; i++) {
-		if (Options[i] == op)
+		if (options_[i] == op)
 			return true;
 	}
 	return false;
 }
-void Driver::viewoptions() {
+void Driver::getOptions() {
 	for (int i = 0; i < 5; i++) {
-		if (Options[i] != "")
-			cout << Options[i] << ", ";
+		if (options_[i] != "")
+			cout << options_[i] << ", ";
 	}
 }
-void Driver::updatecar(string carmodel, string plateno, int maxpax) {
-	Carmodel = carmodel;
-	Plateno = plateno;
-	Maxpax = maxpax;
+void Driver::updateCar(string carmodel, string plateno, int maxpax) {
+	car_model_ = carmodel;
+	plate_number_ = plateno;
+	max_passengers_ = maxpax;
 }

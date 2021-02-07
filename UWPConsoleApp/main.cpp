@@ -3,12 +3,6 @@
 using namespace winrt;
 using namespace Windows::Foundation;
 
-int main()
-{
-    winrt::init_apartment();
-    while (true) main_menu();
-}
-
 void main_menu() {
     int user_option;
 
@@ -31,4 +25,10 @@ void main_menu() {
     default:
         std::cout << "Invalid option." << std::endl;
     }
+}
+
+int main()
+{
+    winrt::init_apartment();
+    while (true) main_menu();
 }

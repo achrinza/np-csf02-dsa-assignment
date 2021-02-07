@@ -43,3 +43,17 @@ void Driver::updateCar(string carmodel, string plateno, int maxpax) {
 	plate_number_ = plateno;
 	max_passengers_ = maxpax;
 }
+
+void Driver::printAsHumanReadable(std::ostream& output) {
+	output << "[Driver]" << std::endl;
+	output << "ID             = " << this->id_ << std::endl;
+	output << "Full Name      = " << this->full_name_ << std::endl;
+	output << "Car model      = " << this->car_model_ << std::endl;
+	output << "Max Passengers = " << this->max_passengers_ << std::endl;
+	output << "Plate Number   = " << this->plate_number_ << std::endl;
+	output << "Options        = ";
+
+	for (int i = 0; i <= 5; i++)
+		output << "    " << this->options_[i] << std::endl;
+
+}
